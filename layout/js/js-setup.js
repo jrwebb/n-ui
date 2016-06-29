@@ -95,6 +95,9 @@ class JsSetup {
 		waitForCondition('Polyfill', () => {
 			this.bootstrapResult = this.init(opts)
 				.then(result => {
+					if (result.flags.coreExperienceFairy) {
+						return;
+					}
 					let promise = callback(result);
 					if (!(promise && typeof promise.then === 'function')) {
 						promise = Promise.resolve();
