@@ -111,6 +111,11 @@ const oTrackingWrapper = {
 				}, context))
 			}
 
+			// Track links via o-tracking
+			if (flags.get('oTrackingLink')) {
+				oTracking.link.init();
+			}
+
 		} catch (err) {
 			broadcast('oErrors.log', {
 				error: err,
