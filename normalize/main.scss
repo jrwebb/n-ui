@@ -12,11 +12,13 @@
 	}
 
 	/**
-	* Remove the margin in all browsers (opinionated).
+	* 1. Remove the margin in all browsers (opinionated).
+	* 2. Prevent horizontal scrollbars on the body
 	*/
 
 	body {
-		margin: 0;
+		margin: 0; /* 1 */
+		overflow-x: hidden; /* 2 */
 	}
 
 	/* Links
