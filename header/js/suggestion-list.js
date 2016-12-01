@@ -19,6 +19,12 @@ export class SuggestionList extends React.Component {
 		return text.replace(RegExp(regExpEscape(this.state.searchTerm), 'gi'), '<mark>$&</mark>');
 	}
 
+	tailLink (group) {
+		if (group.tailLink) {
+			return <a href="{group.tailLink.url}">{group.tailLink.text}</a>
+		}
+	}
+
 	render () {
 		const hasTags = this.state.suggestions.tags.length;
 		const hasEquities = this.state.suggestions.equities.length;
@@ -44,7 +50,12 @@ export class SuggestionList extends React.Component {
 							html: this.highlight(suggestion.name) + `<abbr>${this.highlight(suggestion.symbol)}</abbr>`,
 							url: suggestion.url,
 							id: suggestion.symbol
-					}))
+					})),
+				tailLink: {
+					url: 'asdsad',
+					text: 'adghaskdhksajhdj',
+					trackable: 'asdasnkjdsaj'
+				}
 			})
 		}
 
@@ -63,6 +74,7 @@ export class SuggestionList extends React.Component {
 						</li>
 					)) }
 					</ul>
+					{this.tailLink(group)}
 				</div>
 			)) }
 		</div>

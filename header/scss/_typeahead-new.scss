@@ -17,7 +17,6 @@
 	width: 100%;
 	margin: -2px 0 0;
 	border: 1px solid rgba(0, 0, 0, 0.3);
-	border-radius: 0.3em;
 	overflow: hidden;
 	background: getColor('white');
 	text-align: left;
@@ -33,10 +32,11 @@
 }
 
 .o-header__typeahead h3 {
-	padding: 5px;
-	margin: 0;
-	background: getColor('grey-tint4');
-	color: getColor('white');
+	border-top: 5px solid getColor('black');
+	@include oTypographySansBold(m);
+	color: getColor('black');
+	// padding: 5px 0;
+	margin: 5px 10px;
 }
 
 .o-header__typeahead ul,
@@ -61,18 +61,27 @@
 	}
 }
 
+.o-header__typeahead li {
+	margin: 0 25px;
+	border-top: 1px solid getColor(grey-tint2);
+	&:first-child {
+		border-top: 0;
+	}
+}
 .o-header__typeahead-link {
-	padding: 8px 16px;
+
+	padding: 5px 0;
 	cursor: pointer;
-	color: getColor('black');
+	color: getColor('grey-tint5');
 	border-bottom: 0;
 	box-sizing: border-box;
 	display: block;
 	text-decoration: none;
+	@include oTypographySans(s)
 
 	mark {
 		background: none;
-		font-weight: 600;
+		@include oTypographySansBold(s)
 	}
 
 	abbr {
@@ -97,6 +106,8 @@
 		display: block;
 	}
 }
+
+
 
 .o-header__typeahead-view-all button {
 	@include oColorsFor(o-header, background text);
