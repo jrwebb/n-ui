@@ -3,21 +3,8 @@ const shellpromise = require('shellpromise');
 const semver = require('semver');
 const fetch = require('node-fetch');
 const deployStatic = require('@financial-times/n-heroku-tools').deployStatic.task;
-const tag = process.env.CIRCLE_TAG;
-let versions;
-let isOfficialRelease = false;
 
-if (!tag) {
-	versions = ['dummy-release'];
-} else if (!semver.valid(tag) || /(beta|rc)/.test(tag)) {
-	versions = [tag];
-} else {
-	isOfficialRelease = true;
-	versions = [
-		tag,
-		tag.split('.').slice(0,1).join('.')
-	]
-}
+const { versions, isOfficialRelease } = require('./versions').get();
 
 function purgeOnce (path, message) {
 	return fetch(path, {
