@@ -110,7 +110,7 @@ export class SuggestionList extends React.Component {
 		const hasSuggestions = hasTags || hasEquities;
 		const suggestions = [];
 		this.items = [];
-		if (this.props.categories.includes('tags')) {
+		if (~this.props.categories.indexOf('tags')) {
 			suggestions.push({
 				heading: headingMapping['tags'],
 				linkClassName: 'o-header__typeahead-link--news',
@@ -131,7 +131,7 @@ export class SuggestionList extends React.Component {
 
 		}
 
-		if (this.props.categories.includes('equities')) {
+		if (~this.props.categories.indexOf('equities')) {
 			suggestions.push({
 				heading: headingMapping['equities'],
 				trackable: 'equities',
