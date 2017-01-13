@@ -100,8 +100,40 @@ function staticAssets () {
 		))
 }
 
-function layouts () {
+
+// salty sign
+//   Usage: sign|s [options] <infile> [outfile]
+
+//   create a signature
+
+//   Options:
+
+//     -h, --help                 output usage information
+//     -H, --header <key: value>  add a custom header (repeatable)
+//     -h, --hash <alg>           hash algorithm (default: sha256)
+//     -a, --armor                output ASCII armor to STDOUT
+//     -F, --force                ignore warnings and do it
+
+function secureTemplates () {
 	return getFileList('templates')
+		.then(files => Promise.all(
+			files
+				.map(fileName => {
+					return shellpromise(`salty sign ${path.join(process.cwd(), fileName)} ${path.join(process.cwd(), fileName)}.signature`)
+						// .then(it => {
+						// 	// console.log(it);
+						// })
+						// .catch(err => {
+						// 	// console.log(err)
+						// })
+				})
+
+		))
+}
+
+function layouts () {
+	return secureTemplates()
+		.then(() => getFileList('templates'))
 		.then(files => Promise.all(
 			versions
 				.map((version) => {
@@ -116,6 +148,22 @@ function layouts () {
 		))
 
 }
+
+
+
+// ----- December 18th -----
+// Rhys Evans [11:40 PM]
+// major version used for tpl, minor for js/css. Solves the race condition.
+// The app probably needs to poll for a json telling it what latest version is
+// ... hmm, or that's basically an npm end point
+//
+// give an option to opt out of the polling entirely (for e.g. offline app)
+//
+// [11:41]
+// add a surrogate key of minor version to every page served. Every time a minor release, soft purge all with that key
+
+// https://github.com/Financial-Times/n-express/compare/rhys/tpl-poc?expand=1
+// inline tiny js files
 
 
 Promise.all([
