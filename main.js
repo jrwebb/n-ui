@@ -15,6 +15,8 @@ import cookieMessage from './cookie-message';
 export const _cookieMessage = cookieMessage;
 import welcomeMessage from './welcome-message';
 export const _welcomeMessage = welcomeMessage;
+import marketingPromo from './marketing-promo';
+export const _marketingPromo = marketingPromo;
 import footer from './footer';
 export const _footer = footer;
 import myft from './myft';

@@ -3,11 +3,24 @@
 <a data-trackable="a11y-skip-to-content" class="n-skip-link" href="#site-content">Skip to content</a>
 <a data-trackable="a11y-skip-to-footer" class="n-skip-link" href="#site-footer">Skip to footer</a>
 
+HEADER TEMPLATE
+
 {{#if content.before}}
 	<div class="o-header-before">{{{content.before}}}</div>
 {{/if}}
 {{#unlessEquals nUi.header.variant 'logo-only'}}
-	{{> n-ui/header/partials/marketing-promo/template}}
+NOT LOGO ONLY
+	{{#if @root.flags.headerMarketingPromo}}
+
+		MKETING PROMO
+		{{#if @root.flags.marketingPromoApp}}
+		TOP CENTER
+			{{> n-ui/marketing-promo/templates/top-center}}
+		{{else}}
+		NOT TOP CENTER
+			{{> n-ui/header/partials/marketing-promo/template}}
+		{{/if}}
+	{{/if}}
 {{/unlessEquals}}
 
 {{#ifEquals @root.viewStyle 'compact'}}

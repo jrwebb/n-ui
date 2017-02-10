@@ -1,9 +1,14 @@
+HELLO
 {{#if @root.flags.headerMarketingPromo}}
+	INNER HELLO
 	<div class="n-header__marketing-promo" data-trackable="marketing-promo:header">
+	WHAT
 		<div class="n-header__marketing-promo__container o-header__container">
+	IS
 			{{#with @root.navigation.lists.account.subscribe}}
 				<a href="{{href}}?segid=0300494" class="n-header__marketing-promo__box" data-trackable="marketing-promo:box">
 			{{/with}}
+	GOING
 				<div class="n-header__marketing-promo__link" data-trackable="marketing-promo:link">
 
 				{{#ifAll @root.flags.headerMarketingPromoDiscountByCohort @root.flags.barrierDiscountByCohort}}
@@ -13,7 +18,7 @@
 						LIMITED TIME ONLY: Subscribe &amp; save <span id="discountPercent"></span>
 					{{/ifEquals}}
 				{{else}}
-					Subscribe to the FT
+		ON			Subscribe to the FT
 				{{/ifAll}}</div>
 			</a>
 		</div>

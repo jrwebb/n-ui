@@ -8,3 +8,4 @@ opt-out
 tracking
 typography
 welcome-message
+marketing-promo

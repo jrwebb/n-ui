@@ -1,9 +1,9 @@
 const OHeader = require('o-header');
-const promoHandler = require('./js/promoHandler');
+// const promoHandler = require('./js/promoHandler');
 const Typeahead = require('../typeahead');
 
 function init (flags) {
-	promoHandler.init(flags);
+	// promoHandler.init(flags);
 
 	new OHeader();
 

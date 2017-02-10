@@ -6,6 +6,7 @@ import header from '../../header';
 import optOut from '../../opt-out';
 import cookieMessage from '../../cookie-message';
 import welcomeMessage from '../../welcome-message';
+import marketingPromo from '../../marketing-promo';
 import subscriptionOfferPrompt from '../../subscription-offer-prompt';
 import footer from '../../footer';
 import myft from '../../myft';
@@ -21,7 +22,8 @@ export const presets = {
 		header: true,
 		footer: true,
 		date: true,
-		welcomeMessage: true
+		welcomeMessage: true,
+		marketingPromo: true
 	},
 	complete: {
 		header: true,
@@ -29,6 +31,7 @@ export const presets = {
 		date: true,
 		cookieMessage: true,
 		welcomeMessage: true,
+		marketingPromo: true,
 		subscriptionOfferPrompt: true,
 		myft: true,
 		ads: true,
@@ -161,6 +164,11 @@ export class ComponentInitializer {
 					if (config.features.welcomeMessage && !this.initializedFeatures.welcomeMessage) {
 						flags.get('welcomePanel') && welcomeMessage.init();
 						this.initializedFeatures.welcomeMessage = true;
+					}
+
+					if (config.features.marketingPromo && !this.initializedFeatures.marketingPromo) {
+						flags.get('marketingPromoapp') && marketingPromo.init();
+						this.initializedFeatures.marketingPromo = true;
 					}
 
 					if (config.features.subscriptionOfferPrompt && !this.initializedFeatures.subscriptionOfferPrompt) {
